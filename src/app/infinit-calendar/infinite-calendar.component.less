@@ -1,0 +1,184 @@
+@event-height: 2.4rem;
+@row-line-height: 1.7rem;
+@rows: 5;
+
+.awesome-calendar {
+  align-items: center;
+  display: flex;
+  font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+  justify-content: center;
+  height: 100%;
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .current-day-indicator {
+      border-bottom: 2px solid rgb(250, 167, 121);
+      padding: 0 16px;
+      margin: 0 16px;
+    }
+  }
+
+  .back-to-today {
+    text-align: right;
+    margin: 1em;
+  }
+
+  .nav-button {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: .2em 16px;
+
+    &:hover {
+      color: #faa799;
+    }
+  }
+
+  .week-labels {
+    box-sizing: border-box;
+    padding: 8px;
+    width: 100%;
+
+    .label {
+      display: inline-block;
+      text-align: center;
+      width: 14.2%;
+
+      // Holiday
+      &.holiday {
+        color: #ED2939;
+      }
+
+    }
+  }
+
+
+  //
+  // hide scrollbar
+  //
+  // see below
+  // https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/
+  .scroll-view-outer-container, .scroll-view {
+    height: 100%;
+    width: 100%;
+  }
+
+  .scroll-view-outer-container {
+    border: 1px solid rgba(#888, .4);
+    border-radius: 4px;
+    box-shadow: 1px 0px 3px -1px rgba(#888, .8);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-view-inner-container {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+
+
+    // スクロールをスムーズに
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .row {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    line-height: @row-line-height;
+    height: @row-line-height + @event-height;
+  }
+
+  .cell {
+    display: flex;
+    padding-bottom: 0;
+    position: relative;
+    text-align: center;
+    width: 14.2%;
+    align-items: center;
+    height: 40px;
+
+    &.end{
+      &:before{
+        content: '';
+        background: #e8f1fe;
+        width: 20px;
+        height: 100%;
+        position: absolute;
+      }
+    }
+    // hovered day
+    &:hover {
+      background: rgba(#ffff9f, .4);
+    }
+
+    // today
+    &.current {
+      border: 2px #faa779 solid;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    // selected day
+    &.selected {
+      background: rgba(102, 199, 255, 0.6);
+      border-radius: 50%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    // Holiday
+    &.holiday {
+      color: #ED2939;
+    }
+
+
+    &.range{
+      background: #e8f1fe;
+    }
+
+    // the first day of month
+    .first-day {
+      color: #989898;
+      font-size: .87em;
+      font-weight: 400;
+    }
+
+    // eventscc
+    .event-container {
+      height: 2rem;
+      overflow: hidden;
+
+      .event {
+        color: rgb(95, 158, 160);
+        font-size: .8rem;
+        height: 1rem;
+        line-height: 1rem;
+        overflow: hidden;
+        padding: 0 .2em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    .date-container {
+      margin: auto;
+    }
+  }
+
+}

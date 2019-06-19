@@ -20,6 +20,9 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
+    "extdate": "^0.3.5",
+    "ng-infinite-calendar": "^0.1.8",
+    "ngx-infinite-scroll": "^7.2.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
